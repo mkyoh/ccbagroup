@@ -96,7 +96,7 @@ section p {
   max-width: 800px; /* Adjust the maximum width as per your design */
   margin: 0 auto; /* Center the container horizontally */
   padding: 20px; /* Add padding for spacing */
-  background-color: #8e8989; /* Background color of the container */
+  background-color: #e1dbdb; /* Background color of the container */
   border-radius: 8px; /* Rounded corners for aesthetics */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Drop shadow for depth */
   text-align: justify; /* Justify text for a clean look */

@@ -2,11 +2,11 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  
-    background-image: url('images/background1.jpg'); /* Replace 'images/background.jpg' with your actual image path */
+/*   
+    background-image: url('images/background1.jpg'); /* Replace 'images/background.jpg' with your actual image path 
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
   
   
 }
@@ -92,7 +92,24 @@ section h2 {
 section p {
   line-height: 1.5;
 }
+.custom-container {
+  max-width: 800px; /* Adjust the maximum width as per your design */
+  margin: 0 auto; /* Center the container horizontally */
+  padding: 20px; /* Add padding for spacing */
+  background-color: #f1e8e8; /* Background color of the container */
+  border-radius: 8px; /* Rounded corners for aesthetics */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Drop shadow for depth */
+  text-align: justify; /* Justify text for a clean look */
+}
 
+.custom-container h2 {
+  text-align: center; /* Center align the heading */
+  color: #333; /* Adjust heading color */
+}
+
+.custom-container p {
+  line-height: 1.6; /* Increase line height for readability */
+}
 /* Image and Chart Styles */
 .image-container {
   display: flex;

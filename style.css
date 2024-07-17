@@ -1,0 +1,257 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  
+    background-image: url('images/background1.jpg'); /* Replace 'images/background.jpg' with your actual image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  
+  
+}
+.list {
+  margin: 0;
+  padding: 0;
+}
+/* Header Styles */
+header {
+  background-color: #fe001a;
+  display: flex;
+  color: #fff;
+  padding: 0% ;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Navigation Styles */
+nav {
+  background-color:#3c3b3b;
+  color: #fff;
+  display:flex;
+  padding: 10px 0;
+}
+
+nav a {
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background-color: #fe001a;
+}
+
+/* Region Sections Styles */
+section {
+  padding: 40px;
+}
+.slideshow-section {
+  height: 400px; /* Set the height of the slideshow section */
+  position: relative;
+  overflow: hidden;
+}
+
+.slideshow-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slide {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Ensure slide width matches container */
+  height: 100%; /* Ensure slide height matches container */
+  background-size: contain; /* Ensure image fits within slide without cropping */
+  background-position: center; /* Center the background image */
+}
+
+.fade {
+  animation: fadeEffect 2s ease-in-out infinite;
+}
+
+@keyframes fadeEffect {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+#dima{
+  display: flex;
+  text-align: center;
+}
+
+section h2 {
+  color: #fe001a;
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+section p {
+  line-height: 1.5;
+}
+
+/* Image and Chart Styles */
+.image-container {
+  display: flex;
+  justify-content:lefy;
+  margin-bottom: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+}
+.building-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start; /* Ensures items start at the top */
+  margin-top: 20px;
+}
+
+.building {
+  width: 45%;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex; /* Use flexbox for vertical alignment */
+  flex-direction: column; /* Stack elements vertically */
+}
+
+.building h2 {
+  margin-bottom: 10px;
+}
+
+.building img {
+  max-width: 100%; /* Ensures images don't exceed container width */
+  height: auto; /* Maintains aspect ratio */
+  object-fit: cover; /* Ensures images cover the entire container */
+  flex-grow: 1; /* Allows the image to grow and fill the space */
+}
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.column {
+  flex: 1;
+  padding: 10px;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.image-wrapper {
+  width: 100%;
+  height: 200px; /* Fixed height for consistency */
+  overflow: hidden; /* Hide overflow */
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the area while maintaining aspect ratio */
+  border-radius: 5px;
+}
+
+.column p {
+  margin-top: 10px;
+  font-size: 14px;
+}
+.city-overview {
+  display: flex;
+  align-items: flex-start;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.city-overview img {
+  flex: 2;
+  width: 100%;
+  height: auto;
+  margin-right: 20px;
+  border-radius: 10px;
+}
+
+.city-overview .description {
+  flex: 3;
+}
+
+.chart-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.chart-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Footer Styles */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+section#contact {
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.contact-info {
+  margin-bottom: 20px;
+}
+
+.contact-info p {
+  margin: 5px 0;
+}
+
+form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}

@@ -10,10 +10,7 @@ body {
   
   
 }
-.list {
-  margin: 0;
-  padding: 0;
-}
+
 /* Header Styles */
 header {
   background-color: #fe001a;
@@ -41,7 +38,25 @@ nav a {
 nav a:hover {
   background-color: #fe001a;
 }
-
+.list {
+  margin: 0;
+  padding: 0;
+}
+.list-group {
+  list-style-type:circle;
+  padding: 0;
+}
+.list-group-item {
+  padding: 10px;
+  cursor: pointer;
+}
+.list-group-item:hover {
+  background-color: #f0f0f0;
+}
+.details {
+  display: none;
+  margin-top: 20px;
+}
 /* Region Sections Styles */
 section {
   padding: 40px;
@@ -77,10 +92,48 @@ section {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+.about-section {
+  background-image: url('images/about.jpg'); /* Replace with your background image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh; /* Ensure section covers entire viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+}
+
+.about-section h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.about-section p {
+  font-size: 18px;
+  line-height: 1.6;
+}
 #dima{
   display: flex;
   text-align: center;
 }
+.text-overlay {
+  position:absolute;
+  bottom: 20px; /* Adjust as needed */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Center horizontally */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  color: white; /* Text color */
+  padding: 20px;
+  border-radius: 5px;
+  font-size: 1em; /* Adjust as needed */
+  width: 90%; /* Set width to 90% */
+  max-width: 800px; /* Set maximum width */
+  text-align: center; /* Center text within the box */
+}
+
 
 section h2 {
   color: #fe001a;

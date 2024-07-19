@@ -1,0 +1,173 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coca-Cola Ethiopia</title>
+  <link rel="stylesheet" href="style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
+</head>
+
+<body>
+  <header>
+    <img src="images/cocacola_logo2.png" alt="Addis Ababa" />
+    <img src="images/coca logo-2.png" />
+    <h1>Beverages Africa</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About </a>
+    <a href="comparison.html"> Comparison</a>
+    <a href="manufacturing.html">Manufacturing Plants</a>
+    <a href="visitarea.html">Visit Area</a>
+    <a href="activation.html">Activation</a>
+    <a href="outlet.html">Outlet</a>
+  </nav>
+  <div class="container">
+    <ul id="outletList" class="list-group">
+      <!-- Outlet names will be dynamically inserted here -->
+    </ul>
+    <div id="outletDetails" class="details">
+      <!-- Outlet details will be dynamically inserted here -->
+    </div>
+  </div>
+
+  <script>
+    // Data for outlets
+    const outlets = [
+      {
+        name: "Asmira kurse bet",
+        ownerName: "Asmira",
+        phoneNumber: "929262811",
+        address: "Adey abeba",
+        gps: "8.957049, 38.766235",
+        routeStatus: "On Route",
+        redStatus: "Silver",
+        partnershipStatus: "Partner",
+        myccbaStatus: "yes",
+        coolerStatus: "None Cooler",
+        coolerCapacity: "",
+        eabscRgbVpo: "5",
+        eabscPetVpo: "",
+        amboRgbVpo: "2",
+        amboPetVpo: "",
+        pciCoolerStatus: "No",
+        pciRgbVpo: "2",
+        pciPetVpo: "",
+        channel: "E&D",
+        remark: "",
+      },
+      {
+        name: "Sebseba makifafeya",
+        ownerName: "Sebseba",
+        phoneNumber: "910059174",
+        address: "Adey abeba",
+        gps: "8.956978, 38.765100",
+        routeStatus: "On Route",
+        redStatus: "Bronze",
+        partnershipStatus: "None Partner",
+        myccbaStatus: "No",
+        coolerStatus: "None Cooler",
+        coolerCapacity: "",
+        eabscRgbVpo: "10",
+        eabscPetVpo: "",
+        amboRgbVpo: "5",
+        amboPetVpo: "",
+        pciCoolerStatus: "No",
+        pciRgbVpo: "5",
+        pciPetVpo: "",
+        channel: "Grocery",
+        remark: "",
+      },
+      {
+        name: "Debeculu Shero",
+        ownerName: "Abeba",
+        phoneNumber: "913542392",
+        address: "Adey abeba",
+        gps: "8.957095, 38.765807",
+        routeStatus: "On Route",
+        redStatus: "Bronze",
+        partnershipStatus: "None Partner",
+        myccbaStatus: "No",
+        coolerStatus: "Cooler",
+        coolerCapacity: "6",
+        eabscRgbVpo: "5",
+        eabscPetVpo: "",
+        amboRgbVpo: "2",
+        amboPetVpo: "",
+        pciCoolerStatus: "No",
+        pciRgbVpo: "1",
+        pciPetVpo: "",
+        channel: "E&D",
+        remark: "Kiya",
+      },
+      {
+        name: "Grar hotel",
+        ownerName: "Werkinih",
+        phoneNumber: "911412234",
+        address: "Adey abeba",
+        gps: "8.957117, 38.766255",
+        routeStatus: "On Route",
+        redStatus: "Silver",
+        partnershipStatus: "Partner",
+        myccbaStatus: "No",
+        coolerStatus: "Cooler",
+        coolerCapacity: "10",
+        eabscRgbVpo: "10",
+        eabscPetVpo: "",
+        amboRgbVpo: "3",
+        amboPetVpo: "",
+        pciCoolerStatus: "No",
+        pciRgbVpo: "3",
+        pciPetVpo: "",
+        channel: "E&D",
+        remark: "",
+      },
+    ];
+
+    // Function to populate the list of outlets
+    function populateOutletList() {
+      const listElement = document.getElementById("outletList");
+      outlets.forEach((outlet) => {
+        const listItem = document.createElement("li");
+        listItem.textContent = outlet.name;
+        listItem.className = "list-group-item";
+        listItem.onclick = () => showDetails(outlet);
+        listElement.appendChild(listItem);
+      });
+    }
+
+    // Function to show details of the selected outlet
+    function showDetails(outlet) {
+      const detailsElement = document.getElementById("outletDetails");
+      detailsElement.innerHTML = `
+            <h2>${outlet.name}</h2>
+            <p><strong>Owner Name:</strong> ${outlet.ownerName}</p>
+            <p><strong>Phone Number:</strong> ${outlet.phoneNumber}</p>
+            <p><strong>Address:</strong> ${outlet.address}</p>
+            <p><strong>GPS:</strong> ${outlet.gps}</p>
+            <p><strong>On/Off Route Status:</strong> ${outlet.routeStatus}</p>
+            <p><strong>RED Status:</strong> ${outlet.redStatus}</p>
+            <p><strong>Partnership Status:</strong> ${outlet.partnershipStatus}</p>
+            <p><strong>MYCCBA Status:</strong> ${outlet.myccbaStatus}</p>
+            <p><strong>Cooler Status:</strong> ${outlet.coolerStatus}</p>
+            <p><strong>Cooler Capacity:</strong> ${outlet.coolerCapacity}</p>
+            <p><strong>EABSC RGB VPO:</strong> ${outlet.eabscRgbVpo}</p>
+            <p><strong>EABSC PET VPO:</strong> ${outlet.eabscPetVpo}</p>
+            <p><strong>Ambo RGB VPO:</strong> ${outlet.amboRgbVpo}</p>
+            <p><strong>Ambo PET VPO:</strong> ${outlet.amboPetVpo}</p>
+            <p><strong>PCI Cooler Status:</strong> ${outlet.pciCoolerStatus}</p>
+            <p><strong>PCI RGB VPO:</strong> ${outlet.pciRgbVpo}</p>
+            <p><strong>PCI PET VPO:</strong> ${outlet.pciPetVpo}</p>
+            <p><strong>Channel:</strong> ${outlet.channel}</p>
+            <p><strong>Remark:</strong> ${outlet.remark}</p>
+        `;
+      detailsElement.style.display = "block";
+    }
+
+    // Initialize the outlet list when the page loads
+    window.onload = populateOutletList;
+  </script>
+</body>

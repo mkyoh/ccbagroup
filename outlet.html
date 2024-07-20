@@ -25,149 +25,139 @@
     <a href="activation.html">Activation</a>
     <a href="outlet.html">Outlet</a>
   </nav>
-  <div class="container">
-    <ul id="outletList" class="list-group">
-      <!-- Outlet names will be dynamically inserted here -->
+  <section id="content">
+    <h2>Select area</h2>
+    <ul id="city-list">
+      <li><a href="#" data-city="city1">Saris</a></li>
+      <li><a href="#" data-city="city2">Jemo</a></li>
+      <li><a href="#" data-city="city3">Sebeta</a></li>
+      <li><a href="#" data-city="city3">Balderas</a></li>
     </ul>
-    <div id="outletDetails" class="details">
-      <!-- Outlet details will be dynamically inserted here -->
+    <div id="worker-list" style="display: none">
+      <ul id="workers"></ul>
     </div>
-  </div>
-
+    <div id="worker-details" style="display: none">
+      <h2>Worker Details</h2>
+      <p><strong>Name:</strong> <span id="worker-name"></span></p>
+      <p><strong>Phone Number:</strong> <span id="worker-phone"></span></p>
+      <p><strong>Address:</strong> <span id="worker-address"></span></p>
+      <p>
+        <strong>GPS:</strong> <a href="#" id="worker-gps" target="_blank"></a>
+      </p>
+    </div>
+  </section>
   <script>
-    // Data for outlets
-    const outlets = [
-      {
-        name: "Asmira kurse bet",
-        ownerName: "Asmira",
-        phoneNumber: "929262811",
-        address: "Adey abeba",
-        gps: "8.957049, 38.766235",
-        routeStatus: "On Route",
-        redStatus: "Silver",
-        partnershipStatus: "Partner",
-        myccbaStatus: "yes",
-        coolerStatus: "None Cooler",
-        coolerCapacity: "",
-        eabscRgbVpo: "5",
-        eabscPetVpo: "",
-        amboRgbVpo: "2",
-        amboPetVpo: "",
-        pciCoolerStatus: "No",
-        pciRgbVpo: "2",
-        pciPetVpo: "",
-        channel: "E&D",
-        remark: "",
-      },
-      {
-        name: "Sebseba makifafeya",
-        ownerName: "Sebseba",
-        phoneNumber: "910059174",
-        address: "Adey abeba",
-        gps: "8.956978, 38.765100",
-        routeStatus: "On Route",
-        redStatus: "Bronze",
-        partnershipStatus: "None Partner",
-        myccbaStatus: "No",
-        coolerStatus: "None Cooler",
-        coolerCapacity: "",
-        eabscRgbVpo: "10",
-        eabscPetVpo: "",
-        amboRgbVpo: "5",
-        amboPetVpo: "",
-        pciCoolerStatus: "No",
-        pciRgbVpo: "5",
-        pciPetVpo: "",
-        channel: "Grocery",
-        remark: "",
-      },
-      {
-        name: "Debeculu Shero",
-        ownerName: "Abeba",
-        phoneNumber: "913542392",
-        address: "Adey abeba",
-        gps: "8.957095, 38.765807",
-        routeStatus: "On Route",
-        redStatus: "Bronze",
-        partnershipStatus: "None Partner",
-        myccbaStatus: "No",
-        coolerStatus: "Cooler",
-        coolerCapacity: "6",
-        eabscRgbVpo: "5",
-        eabscPetVpo: "",
-        amboRgbVpo: "2",
-        amboPetVpo: "",
-        pciCoolerStatus: "No",
-        pciRgbVpo: "1",
-        pciPetVpo: "",
-        channel: "E&D",
-        remark: "Kiya",
-      },
-      {
-        name: "Grar hotel",
-        ownerName: "Werkinih",
-        phoneNumber: "911412234",
-        address: "Adey abeba",
-        gps: "8.957117, 38.766255",
-        routeStatus: "On Route",
-        redStatus: "Silver",
-        partnershipStatus: "Partner",
-        myccbaStatus: "No",
-        coolerStatus: "Cooler",
-        coolerCapacity: "10",
-        eabscRgbVpo: "10",
-        eabscPetVpo: "",
-        amboRgbVpo: "3",
-        amboPetVpo: "",
-        pciCoolerStatus: "No",
-        pciRgbVpo: "3",
-        pciPetVpo: "",
-        channel: "E&D",
-        remark: "",
-      },
-    ];
+    document.addEventListener("DOMContentLoaded", function () {
+      const cityList = document.getElementById("city-list");
+      const workerList = document.getElementById("worker-list");
+      const workersUl = document.getElementById("workers");
+      const workerDetails = document.getElementById("worker-details");
 
-    // Function to populate the list of outlets
-    function populateOutletList() {
-      const listElement = document.getElementById("outletList");
-      outlets.forEach((outlet) => {
-        const listItem = document.createElement("li");
-        listItem.textContent = outlet.name;
-        listItem.className = "list-group-item";
-        listItem.onclick = () => showDetails(outlet);
-        listElement.appendChild(listItem);
+      const workerName = document.getElementById("worker-name");
+      const workerPhone = document.getElementById("worker-phone");
+      const workerAddress = document.getElementById("worker-address");
+      const workerGPS = document.getElementById("worker-gps");
+
+      const workersData = {
+        city1: [
+          {
+            name: "Asmira kurse bet",
+            phone: "929262811",
+            address: "Adey abeba",
+            gps: "8.957049, 38.766235",
+          },
+          {
+            name: "Sebseba makifafeya",
+            phone: "910059174",
+            address: "Adey abeba",
+            gps: "8.956978, 38.765100",
+          },
+          {
+            name: "Debeculu Shero",
+            phone: "913542392",
+            address: "Adey abeba",
+            gps: "8.957095, 38.765807",
+          },
+          {
+            name: "Grar hotel",
+            phone: "911412234",
+            address: "Adey abeba",
+            gps: "8.957117, 38.766255",
+          },
+        ],
+        city2: [
+          {
+            name: "Debeculu Shero",
+            phone: "913542392",
+            address: "Adey abeba",
+            gps: "8.957095, 38.765807",
+          },
+          {
+            name: "Grar hotel",
+            phone: "321654987",
+            address: "Address 4",
+            gps: "8.957117,38.766255",
+          },
+        ],
+        city3: [
+          {
+            name: "Worker 5",
+            phone: "147258369",
+            address: "Address 5",
+            gps: "8.957049,38.766235",
+          },
+          {
+            name: "Worker 6",
+            phone: "963852741",
+            address: "Address 6",
+            gps: "8.956978,38.765100",
+          },
+        ],
+      };
+
+      cityList.addEventListener("click", function (e) {
+        if (e.target.tagName === "A") {
+          e.preventDefault();
+          const city = e.target.getAttribute("data-city");
+          loadWorkers(city);
+        }
       });
-    }
 
-    // Function to show details of the selected outlet
-    function showDetails(outlet) {
-      const detailsElement = document.getElementById("outletDetails");
-      detailsElement.innerHTML = `
-            <h2>${outlet.name}</h2>
-            <p><strong>Owner Name:</strong> ${outlet.ownerName}</p>
-            <p><strong>Phone Number:</strong> ${outlet.phoneNumber}</p>
-            <p><strong>Address:</strong> ${outlet.address}</p>
-            <p><strong>GPS:</strong> ${outlet.gps}</p>
-            <p><strong>On/Off Route Status:</strong> ${outlet.routeStatus}</p>
-            <p><strong>RED Status:</strong> ${outlet.redStatus}</p>
-            <p><strong>Partnership Status:</strong> ${outlet.partnershipStatus}</p>
-            <p><strong>MYCCBA Status:</strong> ${outlet.myccbaStatus}</p>
-            <p><strong>Cooler Status:</strong> ${outlet.coolerStatus}</p>
-            <p><strong>Cooler Capacity:</strong> ${outlet.coolerCapacity}</p>
-            <p><strong>EABSC RGB VPO:</strong> ${outlet.eabscRgbVpo}</p>
-            <p><strong>EABSC PET VPO:</strong> ${outlet.eabscPetVpo}</p>
-            <p><strong>Ambo RGB VPO:</strong> ${outlet.amboRgbVpo}</p>
-            <p><strong>Ambo PET VPO:</strong> ${outlet.amboPetVpo}</p>
-            <p><strong>PCI Cooler Status:</strong> ${outlet.pciCoolerStatus}</p>
-            <p><strong>PCI RGB VPO:</strong> ${outlet.pciRgbVpo}</p>
-            <p><strong>PCI PET VPO:</strong> ${outlet.pciPetVpo}</p>
-            <p><strong>Channel:</strong> ${outlet.channel}</p>
-            <p><strong>Remark:</strong> ${outlet.remark}</p>
-        `;
-      detailsElement.style.display = "block";
-    }
+      workersUl.addEventListener("click", function (e) {
+        if (e.target.tagName === "A") {
+          e.preventDefault();
+          const workerIndex = e.target.getAttribute("data-worker-index");
+          const city = e.target.getAttribute("data-city");
+          loadWorkerDetails(city, workerIndex);
+        }
+      });
 
-    // Initialize the outlet list when the page loads
-    window.onload = populateOutletList;
+      function loadWorkers(city) {
+        const workers = workersData[city];
+        workersUl.innerHTML = "";
+        workers.forEach((worker, index) => {
+          const li = document.createElement("li");
+          const a = document.createElement("a");
+          a.href = "#";
+          a.textContent = worker.name;
+          a.setAttribute("data-worker-index", index);
+          a.setAttribute("data-city", city);
+          li.appendChild(a);
+          workersUl.appendChild(li);
+        });
+        workerList.style.display = "block";
+        workerDetails.style.display = "none";
+      }
+
+      function loadWorkerDetails(city, workerIndex) {
+        const worker = workersData[city][workerIndex];
+        workerName.textContent = worker.name;
+        workerPhone.textContent = worker.phone;
+        workerAddress.textContent = worker.address;
+        workerGPS.textContent = worker.gps;
+        workerGPS.href = `https://www.google.com/maps?q=${worker.gps}`;
+        workerDetails.style.display = "block";
+      }
+    });
   </script>
 </body>

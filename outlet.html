@@ -39,11 +39,13 @@
     <div id="worker-details" style="display: none">
       <h2>Worker Details</h2>
       <p><strong>Name:</strong> <span id="worker-name"></span></p>
+      <p><strong>Owner Name:</strong> <span id="worker-owner"></span></p>
       <p><strong>Phone Number:</strong> <span id="worker-phone"></span></p>
       <p><strong>Address:</strong> <span id="worker-address"></span></p>
       <p>
         <strong>GPS:</strong> <a href="#" id="worker-gps" target="_blank"></a>
       </p>
+      <button id="back-button">Back to List</button>
     </div>
   </section>
   <script>
@@ -54,46 +56,467 @@
       const workerDetails = document.getElementById("worker-details");
 
       const workerName = document.getElementById("worker-name");
+      const workerOwner = document.getElementById("worker-owner");
       const workerPhone = document.getElementById("worker-phone");
       const workerAddress = document.getElementById("worker-address");
       const workerGPS = document.getElementById("worker-gps");
+      const backButton = document.getElementById("back-button");
 
       const workersData = {
         city1: [
           {
             name: "Asmira kurse bet",
+            owner: "Asmira",
             phone: "929262811",
             address: "Adey abeba",
             gps: "8.957049, 38.766235",
           },
           {
             name: "Sebseba makifafeya",
+            owner: "Sebseba",
             phone: "910059174",
             address: "Adey abeba",
             gps: "8.956978, 38.765100",
           },
           {
             name: "Debeculu Shero",
+            owner: "Abeba",
             phone: "913542392",
             address: "Adey abeba",
             gps: "8.957095, 38.765807",
           },
           {
             name: "Grar hotel",
+            owner: "Werkinih",
             phone: "911412234",
             address: "Adey abeba",
             gps: "8.957117, 38.766255",
+          },
+          {
+            name: "Nati nodel",
+            owner: "Natinael",
+            phone: "917799213",
+            address: "Adey abeba",
+            gps: "8.957122, 38.766981",
+          },
+          {
+            name: "Ahimed",
+            owner: "Ahemed",
+            phone: "989623068",
+            address: "Adey abeba",
+            gps: "8.957145, 38.765105",
+          },
+          {
+            name: "Mukimil sook",
+            owner: "Mukimil",
+            phone: "965570940",
+            address: "Adey abeba",
+            gps: "8.95723, 38.766653",
+          },
+          {
+            name: "Felajot",
+            owner: "ALEM",
+            phone: "911684938",
+            address: "Adey abeba",
+            gps: "8.957525, 38.764446",
+          },
+          {
+            name: "Mohammed",
+            owner: "mohammed",
+            phone: "913545667",
+            address: "Adey abeba",
+            gps: "8.957318, 38.766697",
+          },
+          {
+            name: "Beyin leda",
+            owner: "Fantu",
+            phone: "913175999",
+            address: "Adey abeba",
+            gps: "8.957487, 38.76441",
+          },
+          {
+            name: "Mohammed 2",
+            owner: "Mohammed",
+            phone: "954894228",
+            address: "Adey abeba",
+            gps: "8.957282, 38.766543",
+          },
+          {
+            name: "Burger time 2",
+            owner: "Genit",
+            phone: "980638343",
+            address: "Adey abeba",
+            gps: "8.957401, 38.765979",
+          },
+          {
+            name: "Mintesenot",
+            owner: "Minta",
+            phone: "976787657",
+            address: "Adey abeba",
+            gps: "8.957369, 38.765181",
+          },
+          {
+            name: "Temisegin",
+            owner: "Haji",
+            phone: "968449928",
+            address: "Adey abeba",
+            gps: "8.95738, 38.76505",
+          },
+          {
+            name: "Birije",
+            owner: "Tegayi",
+            phone: "911311237",
+            address: "Adey abeba",
+            gps: "8.957385, 38.76588",
+          },
+          {
+            name: "Zenbech",
+            owner: "Zenbech",
+            phone: "946596250",
+            address: "Adey abeba",
+            gps: "8.957258, 38.765127",
+          },
+          {
+            name: "Atede/unk",
+            owner: "Atede",
+            phone: "935793180",
+            address: "Adey abeba",
+            gps: "8.957396, 38.765806",
+          },
+          {
+            name: "Yilma",
+            owner: "Yilma",
+            phone: "911442209",
+            address: "Adey abeba",
+            gps: "8.957406, 38.765295",
+          },
+          {
+            name: "Wezam sero",
+            owner: "Tadese",
+            phone: "920346419",
+            address: "Adey abeba",
+            gps: "8.957416, 38.765388",
+          },
+          {
+            name: "Ananiya",
+            owner: "Ananiya",
+            phone: "941486470",
+            address: "Adey abeba",
+            gps: "8.957468, 38.76493",
+          },
+          {
+            name: "Liya Hotel",
+            owner: "",
+            phone: "945738292",
+            address: "Adey abeba",
+            gps: "8.957418, 38.765546",
+          },
+          {
+            name: "Feridem/no mac",
+            owner: "Tegayi",
+            phone: "904108701",
+            address: "Adey abeba",
+            gps: "8.957448, 38.765391",
+          },
+          {
+            name: "Saris asa bet",
+            owner: "YOSEF",
+            phone: "925995198",
+            address: "Adey abeba",
+            gps: "8.957485, 38.765127",
+          },
+          {
+            name: "Wabi hotel",
+            owner: "Wabi",
+            phone: "911091586",
+            address: "Adey abeba",
+            gps: "8.957528, 38.765576",
+          },
+          {
+            name: "Kemal",
+            owner: "Kemal",
+            phone: "913187048",
+            address: "Adey abeba",
+            gps: "8.957547, 38.765748",
+          },
+          {
+            name: "Snoz",
+            owner: "Alemayih",
+            phone: "935981674",
+            address: "Adey abeba",
+            gps: "8.957729, 38.765739",
+          },
+          {
+            name: "Joy burger",
+            owner: "JOY",
+            phone: "910501642",
+            address: "Adey abeba",
+            gps: "8.957752, 38.764094",
+          },
+          {
+            name: "Habisa/ kun",
+            owner: "Hayilu",
+            phone: "911221850",
+            address: "Adey abeba",
+            gps: "8.957838, 38.764081",
+          },
+          {
+            name: "Befrhot hotel",
+            owner: "",
+            phone: "913772187",
+            address: "Total Addis sefer",
+            gps: "8.957836, 38.765696",
+          },
+          {
+            name: "Seada",
+            owner: "Seada",
+            phone: "",
+            address: "Total Addis sefer",
+            gps: "8.958108, 38.765670",
+          },
+          {
+            name: "Arsema",
+            owner: "",
+            phone: "",
+            address: "Total Addis sefer",
+            gps: "8.958234, 38.765663",
+          },
+          {
+            name: "Zinu",
+            owner: "Zinash",
+            phone: "",
+            address: "Total Addis sefer",
+            gps: "8.958405, 38.765660",
+          },
+          {
+            name: "HAYATU SOOK",
+            owner: "Hayatu",
+            phone: "991156796",
+            address: "Total Addis sefer",
+            gps: "8.958548, 38.765652",
+          },
+          {
+            name: "Amen",
+            owner: "",
+            phone: "",
+            address: "Total Addis sefer",
+            gps: "8.958565, 38.765682",
+          },
+          {
+            name: "Abdi",
+            owner: "Abdi",
+            phone: "913144093",
+            address: "Total Addis sefer",
+            gps: "8.958604, 38.765644",
+          },
+          {
+            name: "Sulitan",
+            owner: "",
+            phone: "",
+            address: "Total Addis sefer",
+            gps: "8.958910, 38.765683",
+          },
+          {
+            name: "Asafish",
+            owner: "",
+            phone: "",
+            address: "Total Addis sefer",
+            gps: "8.958960, 38.765712",
+          },
+          {
+            name: "Alex",
+            owner: "Alemayewu",
+            phone: "",
+            address: "Total Addis sefer",
+            gps: "8.959507, 38.765662",
+          },
+          {
+            name: "Wenda sook",
+            owner: "Wendesen",
+            phone: "91333528191",
+            address: "Total Addis sefer",
+            gps: "8.959509, 38.765634",
+          },
+          {
+            name: "Sudeyis sook",
+            owner: "Sudeyis",
+            phone: "922538925",
+            address: "Total Addis sefer",
+            gps: "8.959910, 38.765678",
+          },
+          {
+            name: "Chambelala",
+            owner: "Menga",
+            phone: "913005557",
+            address: "TOTAL ADDIS SEFER",
+            gps: "8.960069, 38.765354",
+          },
+          {
+            name: "Tina bar",
+            owner: "Mesele",
+            phone: "911716607",
+            address: "Total Addis sefer",
+            gps: "8.960103, 38.765730",
+          },
+          {
+            name: "Bealta",
+            owner: "Solomon",
+            phone: "114708292",
+            address: "Total Addis sefer",
+            gps: "8.960133, 38.765322",
+          },
+          {
+            name: "Alemaya",
+            owner: "Yirgalem Shimelis",
+            phone: "910751889",
+            address: "Total Addis sefer",
+            gps: "8.960148, 38.765053",
+          },
+          {
+            name: "Shemsu grocery",
+            owner: "Shemsu",
+            phone: "912066262",
+            address: "Total Addis sefer",
+            gps: "8.960164, 38.765904",
+          },
+          {
+            name: "Wezam shiro",
+            owner: "Tekilit",
+            phone: "912463066",
+            address: "Total Addis sefer",
+            gps: "8.960184, 38.766157",
+          },
+          {
+            name: "Shalu bar",
+            owner: "Zemecha mare",
+            phone: "912628804",
+            address: "Total Addis sefer",
+            gps: "8.960196, 38.766040",
+          },
+          {
+            name: "Wedeb bar",
+            owner: "",
+            phone: "910650158",
+            address: "Total Addis sefer",
+            gps: "8.960203, 38.766121",
+          },
+          {
+            name: "Burger time",
+            owner: "Kidist Tefera",
+            phone: "911669917",
+            address: "TOTAL ADDIS SEFER",
+            gps: "8.960214, 38.765813",
+          },
+          {
+            name: "Kezira Shero",
+            owner: "",
+            phone: "",
+            address: "Total Addis sefer",
+            gps: "8.960243, 38.766436",
+          },
+          {
+            name: "Elilita",
+            owner: "",
+            phone: "",
+            address: "Total Addis sefer",
+            gps: "8.960265, 38.766582",
+          },
+          {
+            name: "Mekonin Akefafayi",
+            owner: "Mekonin",
+            phone: "912334923",
+            address: "TOTAL ADDIS SEFER",
+            gps: "8.960265, 38.766675",
+          },
+          {
+            name: "Gold fish",
+            owner: "Birka legese",
+            phone: "911722977",
+            address: "Total Addis sefer",
+            gps: "8.960270, 38.766458",
+          },
+          {
+            name: "Abdurezaqi sook",
+            owner: "Abdurezaqi",
+            phone: "910665152",
+            address: "TOTAL ADDIS SEFER",
+            gps: "8.960281, 38.766197",
+          },
+          {
+            name: "Selam buna",
+            owner: "Selam sahilu",
+            phone: "911218946",
+            address: "Total Addis sefer",
+            gps: "8.960291, 38.766681",
+          },
+          {
+            name: "Gs burger",
+            owner: "Gezahagin",
+            phone: "923249395",
+            address: "Total Addis sefer",
+            gps: "8.960310, 38.766500",
+          },
+          {
+            name: "Genet sook",
+            owner: "",
+            phone: "908242008",
+            address: "Total Addis sefer",
+            gps: "8.960342, 38.766950",
+          },
+          {
+            name: "Genet bar",
+            owner: "Genet",
+            phone: "911184159",
+            address: "Total Addis sefer",
+            gps: "8.960354, 38.766866",
+          },
+          {
+            name: "Mulu juice",
+            owner: "",
+            phone: "927413852",
+            address: "Total Addis sefer",
+            gps: "8.960388, 38.767311",
+          },
+          {
+            name: "Des 9",
+            owner: "",
+            phone: "",
+            address: "Total Addis sefer",
+            gps: "8.960417, 38.767074",
+          },
+          {
+            name: "Kemal sook",
+            owner: "Kemal",
+            phone: "",
+            address: "Total Addis sefer",
+            gps: "8.960460, 38.767157",
+          },
+          {
+            name: "Aberus bar",
+            owner: "",
+            phone: "",
+            address: "Total Addis sefer",
+            gps: "8.960479, 38.767037",
+          },
+          {
+            name: "Azi shiro",
+            owner: "Azeb",
+            phone: "948911217",
+            address: "Total Addis sefer",
+            gps: "8.963973, 38.767696",
           },
         ],
         city2: [
           {
             name: "Debeculu Shero",
+            owner: "Owner F",
             phone: "913542392",
             address: "Adey abeba",
             gps: "8.957095, 38.765807",
           },
           {
             name: "Grar hotel",
+            owner: "Owner G",
             phone: "321654987",
             address: "Address 4",
             gps: "8.957117,38.766255",
@@ -102,12 +525,14 @@
         city3: [
           {
             name: "Worker 5",
+            owner: "Owner H",
             phone: "147258369",
             address: "Address 5",
             gps: "8.957049,38.766235",
           },
           {
             name: "Worker 6",
+            owner: "Owner I",
             phone: "963852741",
             address: "Address 6",
             gps: "8.956978,38.765100",
@@ -132,6 +557,11 @@
         }
       });
 
+      backButton.addEventListener("click", function () {
+        workerDetails.style.display = "none";
+        workerList.style.display = "block";
+      });
+
       function loadWorkers(city) {
         const workers = workersData[city];
         workersUl.innerHTML = "";
@@ -152,10 +582,12 @@
       function loadWorkerDetails(city, workerIndex) {
         const worker = workersData[city][workerIndex];
         workerName.textContent = worker.name;
+        workerOwner.textContent = worker.owner;
         workerPhone.textContent = worker.phone;
         workerAddress.textContent = worker.address;
         workerGPS.textContent = worker.gps;
         workerGPS.href = `https://www.google.com/maps?q=${worker.gps}`;
+        workerList.style.display = "none";
         workerDetails.style.display = "block";
       }
     });

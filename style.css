@@ -340,6 +340,7 @@ section p {
 
 .city-overview .description {
   flex: 3;
+  list-style:circle;
 }
 
 .chart-container {

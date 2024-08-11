@@ -14,29 +14,59 @@ body {
 /* Header Styles */
 header {
   background-color: #fe001a;
-  display: flex;
   color: #fff;
-  padding: 0% ;
+  padding: 1rem;
+  display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  text-align: center;
+}
+
+header img {
+  max-width: 100px; /* Adjust size as needed */
+  height: auto;
+  margin: 0 10px; /* Space between images and heading */
+}
+
+header h1 {
+  margin: 0;
 }
 
 /* Navigation Styles */
 nav {
-  background-color:#3c3b3b;
+  background-color: #3c3b3b;
   color: #fff;
-  display:flex;
+  display: flex;
   padding: 10px 0;
+  justify-content: flex-start; /* Aligns items to the left */
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
 }
 
 nav a {
   color: #fff;
   padding: 10px 20px;
   text-decoration: none;
+  display: block;
 }
 
+/* Hover Effect */
 nav a:hover {
   background-color: #fe001a;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column; /* Stack items vertically on small screens */
+    width: 100%;
+  }
+
+  nav a {
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+  }
 }
 .list {
   margin: 0;
